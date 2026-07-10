@@ -1,5 +1,8 @@
 # Composio App Research Agent
 
+**Live case study:** [https://sunayana225.github.io/Composio/](https://sunayana225.github.io/Composio/)  
+**Source repo:** [https://github.com/Sunayana225/Composio](https://github.com/Sunayana225/Composio)
+
 AI-powered research pipeline that analyzes 100 apps across 10 categories for Composio's agent toolkit platform. Researches auth methods, self-serve availability, API surfaces, MCP status, and produces a buildability verdict for each app.
 
 ## Quick Start
