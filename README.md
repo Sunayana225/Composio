@@ -88,3 +88,8 @@ All in `output/`:
 8. Productivity and PM (Notion, Airtable, Linear, Jira, Asana, Monday.com, ClickUp, Coda, Smartsheet, Harvest)
 9. Finance and Fintech (Stripe, Plaid, Binance, Paygent, iPayX, QuickBooks, Xero, Brex, Ramp, PitchBook)
 10. AI, Research and Media (NotebookLM, Otter AI, Fathom, Consensus, Reducto, Devin, higgsfield, Mermaid CLI, YouTube Transcript, Grain)
+  
+## Submission  
+  
+**Live Case Study:** https://sunayana225.github.io/Composio/  
+**Source Repo:** https://github.com/Sunayana225/Composio 
