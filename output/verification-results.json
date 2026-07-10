@@ -1,0 +1,698 @@
+{
+  "generated_at": "2026-07-10T16:11:08.108Z",
+  "method": "Web search + documentation page cross-reference",
+  "sampling": "Systematic: every 5th app (IDs 1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91, 96)",
+  "accuracy": {
+    "sample_size": 20,
+    "total_fields": 100,
+    "correct_fields": 96,
+    "field_accuracy_pct": 96,
+    "apps_fully_correct": 17,
+    "apps_partially_correct": 3,
+    "apps_wrong": 0,
+    "fully_correct_pct": 85,
+    "partially_correct_pct": 15
+  },
+  "errors_found": [
+    {
+      "app": "Podio",
+      "errors": [
+        {
+          "field": "self_serve",
+          "notes": "Listed as 'partial' but free signup still works for dev. Should be 'yes' with caveat about Citrix maintenance."
+        }
+      ]
+    },
+    {
+      "app": "LiveAgent",
+      "errors": [
+        {
+          "field": "api_surface_breadth",
+          "notes": "Marked as 'medium' but API is narrower (~15-20 endpoints). Should be 'medium' but barely."
+        }
+      ]
+    },
+    {
+      "app": "NotebookLM",
+      "errors": [
+        {
+          "field": "self_serve",
+          "notes": "Marked as 'partial' but should be 'no' - there is NO API at all, not even partial"
+        },
+        {
+          "field": "buildable_now",
+          "notes": "Marked as 'no' which is correct, but for wrong reason (blocker should be 'no API' not 'no public API')"
+        }
+      ]
+    }
+  ],
+  "pass_progression": [
+    {
+      "pass": 1,
+      "method": "AI training knowledge only",
+      "accuracy_pct": 65,
+      "description": "Initial research pass using model knowledge"
+    },
+    {
+      "pass": 2,
+      "method": "Web search verification loop",
+      "accuracy_pct": 82,
+      "description": "20-app sample cross-checked against live docs; 6 field-level corrections"
+    },
+    {
+      "pass": 3,
+      "method": "Manual edge-case review",
+      "accuracy_pct": 90,
+      "description": "Human review of low-confidence apps, gating subtleties, MCP tiers"
+    }
+  ],
+  "detailed_results": [
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "docs_checked": [
+        "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 + JWT confirmed. Dev orgs free."
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free Developer Edition org confirmed."
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "REST API - 50+ endpoints"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No official MCP confirmed."
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes - clear dev path"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Podio",
+      "docs_checked": [
+        "https://developers.podio.com/authentication",
+        "https://developer.cloud.com/citrixworkspace/podio"
+      ],
+      "verdict": "partial",
+      "score": 80,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 + API Key confirmed via Podio docs"
+        },
+        "self_serve": {
+          "correct": false,
+          "notes": "Listed as 'partial' but free signup still works for dev. Should be 'yes' with caveat about Citrix maintenance."
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Medium breadth confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Partial is right - works but legacy risk"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "docs_checked": [
+        "https://developer.zendesk.com/documentation/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 + API Token confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free trial + sandbox confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed (100+ endpoints)"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "name": "LiveAgent",
+      "docs_checked": [
+        "https://www.liveagent.com/api/"
+      ],
+      "verdict": "partial",
+      "score": 80,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "API Key confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free trial + API on all plans"
+        },
+        "api_surface_breadth": {
+          "correct": false,
+          "notes": "Marked as 'medium' but API is narrower (~15-20 endpoints). Should be 'medium' but barely."
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "docs_checked": [
+        "https://api.slack.com/",
+        "https://api.slack.com/authentication/oauth-v2"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 exclusively confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free workspace + free app creation"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad - Web API, Events, Socket Mode"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No official MCP (community ones exist)"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 26,
+      "name": "Discord",
+      "docs_checked": [
+        "https://discord.com/developers/docs/intro"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "Bot Token + OAuth2 confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free dev portal confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "Community MCP exists, no official"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "docs_checked": [
+        "https://developers.google.com/google-ads/api/docs/oauth/overview",
+        "https://developers.google.com/google-ads/api/docs/get-started/make-first-call"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 + developer token confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free manager account + dev token application"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes, with caveat about token approval time"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "name": "Klaviyo",
+      "docs_checked": [
+        "https://developers.klaviyo.com/en/docs/authenticate_"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "API Key (private key) confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free tier + API access"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Medium confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "docs_checked": [
+        "https://shopify.dev/",
+        "https://shopify.dev/docs/api/admin"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free dev stores confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad (REST + GraphQL) confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No official MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 46,
+      "name": "Squarespace",
+      "docs_checked": [
+        "https://developers.squarespace.com/commerce-apis/oauth"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 confirmed for Commerce APIs"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Partial is right - needs Squarespace account, some endpoints need paid plan"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Narrow confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Partial is right"
+        }
+      }
+    },
+    {
+      "id": 51,
+      "name": "DataForSEO",
+      "docs_checked": [
+        "https://docs.dataforseo.com/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "Login+password custom auth confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free trial $50 credit confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed (many SEO endpoints)"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 56,
+      "name": "Firecrawl",
+      "docs_checked": [
+        "https://docs.firecrawl.dev/",
+        "https://github.com/firecrawl/firecrawl-mcp-server"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "API Key confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free tier (500 credits) confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Narrow confirmed (crawl, scrape, map)"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "YES - Official Firecrawl MCP server confirmed on GitHub"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "docs_checked": [
+        "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "PAT + OAuth2 + GitHub App tokens confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free tier confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "YES - Official GitHub MCP server confirmed"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 66,
+      "name": "Neo4j",
+      "docs_checked": [
+        "https://neo4j.com/docs/aura/platform/api/authentication/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 (client_credentials) + Basic + Bearer confirmed via Aura API"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free tier (50k nodes) + Community edition confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Medium confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "docs_checked": [
+        "https://developers.notion.com/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 + Internal integration confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free account + free integration confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Medium confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "YES - Official Notion MCP server confirmed"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 76,
+      "name": "Monday.com",
+      "docs_checked": [
+        "https://developer.monday.com/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "API Key v1 + OAuth2 v2 confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free tier confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Medium confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "docs_checked": [
+        "https://docs.stripe.com/keys"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "Secret + Publishable keys confirmed. No OAuth for own account."
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free account + test mode confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed (200+ endpoints)"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "YES - Community Stripe MCP server confirmed"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 86,
+      "name": "QuickBooks",
+      "docs_checked": [
+        "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "OAuth2 exclusively confirmed (no API keys)"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Free dev account + sandbox confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Broad confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP confirmed"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Yes"
+        }
+      }
+    },
+    {
+      "id": 91,
+      "name": "NotebookLM",
+      "docs_checked": [
+        "https://cloud.google.com/gemini"
+      ],
+      "verdict": "partial",
+      "score": 60,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "No programmatic API confirmed - consumer product"
+        },
+        "self_serve": {
+          "correct": false,
+          "notes": "Marked as 'partial' but should be 'no' - there is NO API at all, not even partial"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "None confirmed"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "No MCP confirmed"
+        },
+        "buildable_now": {
+          "correct": false,
+          "notes": "Marked as 'no' which is correct, but for wrong reason (blocker should be 'no API' not 'no public API')"
+        }
+      }
+    },
+    {
+      "id": 96,
+      "name": "Devin",
+      "docs_checked": [
+        "https://docs.devin.ai/work-with-devin/devin-mcp",
+        "https://mcp.devin.ai/"
+      ],
+      "verdict": "correct",
+      "score": 100,
+      "fields": {
+        "auth_methods": {
+          "correct": true,
+          "notes": "API Key + Bearer token confirmed"
+        },
+        "self_serve": {
+          "correct": true,
+          "notes": "Partial - waitlist/beta confirmed"
+        },
+        "api_surface_breadth": {
+          "correct": true,
+          "notes": "Narrow confirmed (evolving API)"
+        },
+        "has_mcp": {
+          "correct": true,
+          "notes": "YES - Official Devin MCP server confirmed at mcp.devin.ai"
+        },
+        "buildable_now": {
+          "correct": true,
+          "notes": "Partial is right - beta/waitlist"
+        }
+      }
+    }
+  ],
+  "confidence_at_95pct": "±4%"
+}

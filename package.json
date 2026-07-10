@@ -1,0 +1,29 @@
+{
+  "name": "composio-research-agent",
+  "version": "1.0.0",
+  "description": "AI-powered research agent for analyzing 100 apps across 10 categories — auth methods, self-serve availability, API surfaces, and buildability for Composio's agent toolkit platform.",
+  "main": "src/pipeline-runner.js",
+  "scripts": {
+    "research": "node src/pipeline-runner.js",
+    "verify": "node src/verification-agent.js",
+    "analyze": "node src/build-research-data.js",
+    "pipeline": "node src/pipeline-runner.js --full"
+  },
+  "keywords": [
+    "composio",
+    "research",
+    "agent",
+    "app-analysis",
+    "api-research"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
+    "@composio/core": "^0.13.1",
+    "axios": "^1.18.1",
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.4.2"
+  }
+}
